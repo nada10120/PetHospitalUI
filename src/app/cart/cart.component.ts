@@ -43,7 +43,7 @@ export class CartComponent implements OnInit {
     this.cartService.deleteItem(productId).subscribe(() => this.loadCart());
   }
   checkout() {
-    this.http.post<any>(`https://localhost:7202/api/Customer/Carts/CreateCheckoutSession/${this.auth.getCurrentUserId()}`, {})
+    this.http.post<any>(`http://pethospital.runasp.net/api/Customer/Carts/CreateCheckoutSession/${this.auth.getCurrentUserId()}`, {})
       .subscribe(async res => {
         window.location.href = res.url; // Redirect to Stripe checkout
       });

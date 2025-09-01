@@ -17,7 +17,7 @@ export interface PostResponse {
   providedIn: 'root'
 })
 export class PostService {
-  private apiUrl = 'https://localhost:7202/api/Admin/Post';
+  private apiUrl = 'http://pethospital.runasp.net/api/Admin/Post';
 
   constructor(private http: HttpClient) { }
 

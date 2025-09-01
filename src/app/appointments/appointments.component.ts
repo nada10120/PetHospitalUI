@@ -49,7 +49,7 @@ export class AppointmentsComponent implements OnInit {
   pets: Pet[] = [];
   services: Service[] = [];
 
-  private apiUrl = 'https://localhost:7202/api/Customer/Reservation';
+  private apiUrl = 'http://pethospital.runasp.net/api/Customer/Reservation';
 
   constructor(
     private http: HttpClient,
@@ -80,9 +80,9 @@ export class AppointmentsComponent implements OnInit {
   }
 
   loadDropdownData() {
-    this.http.get<Vet[]>('https://localhost:7202/api/Customer/Reservation/GetAllVets').subscribe(v => this.vets = v);
-    this.http.get<Pet[]>('https://localhost:7202/api/Admin/Pets').subscribe(p => this.pets = p);
-    this.http.get<Service[]>('https://localhost:7202/api/Admin/Services').subscribe(s => this.services = s);
+    this.http.get<Vet[]>('http://pethospital.runasp.net/api/Customer/Reservation/GetAllVets').subscribe(v => this.vets = v);
+    this.http.get<Pet[]>('http://pethospital.runasp.net/api/Admin/Pets').subscribe(p => this.pets = p);
+    this.http.get<Service[]>('http://pethospital.runasp.net/api/Admin/Services').subscribe(s => this.services = s);
   }
 
   startEdit(appointment: Appointment) {

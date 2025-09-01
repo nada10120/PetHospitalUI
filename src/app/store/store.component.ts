@@ -54,7 +54,7 @@ export class StoreComponent implements OnInit {
 
   loadProducts() {
     const params = { ...this.filters, page: this.currentPage };
-    this.http.get<StoreResponse>('https://localhost:7202/api/Customer/ECommerces/index', { params })
+    this.http.get<StoreResponse>('http://pethospital.runasp.net/api/Customer/ECommerces/index', { params })
       .subscribe({
         next: (response) => {
           this.products = response.products.map(product => ({
@@ -82,7 +82,7 @@ export class StoreComponent implements OnInit {
 
   addToCart(product: Product) {
     const cartItem: CartItem = {
-      
+
       productId: product.productId,
       productName: product.name,
       productPrice: product.price,

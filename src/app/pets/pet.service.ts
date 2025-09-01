@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PetService {
-  apiUrl = 'https://localhost:7202/api/Admin/Pets';
+  apiUrl = 'http://pethospital.runasp.net/api/Admin/Pets';
 
   constructor(private http: HttpClient) {}
 

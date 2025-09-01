@@ -1,12 +1,12 @@
 export const environment = {
   production: false,
-  apiUrl: 'https://localhost:7202/api/Customer/Carts',
-  productApiUrl: 'https://localhost:7202/api/Customer/ECommerces',
-  petsApiUrl: 'https://localhost:7202/api/Admin/Pets',
-  reservationUrl:'https:localhost:7202/api/Customer/Reservation',
-  VetUri:'https://localhost:7202/api/Admin/Vets',
-  userUrl:'https://localhost:7202/api/Admin/Users',
-  authUrl:'https://localhost:7202/api/Identity/Account',
-  apiBaseUrl:'https://localhost:7202/api'
+  apiUrl: 'https://pethospital.runasp.net/api/Customer/Carts',
+  productApiUrl: 'https://pethospital.runasp.net/api/Customer/ECommerces',
+  petsApiUrl: 'https://pethospital.runasp.net/api/Admin/Pets',
+  reservationUrl:'https://pethospital.runasp.net/api/Customer/Reservation',
+  VetUri:'https://pethospital.runasp.net/api/Admin/Vets',
+  userUrl:'https://pethospital.runasp.net/api/Admin/Users',
+  authUrl:'https://pethospital.runasp.net/api/Identity/Account',
+  apiBaseUrl:'https://pethospital.runasp.net/api'
 
 };

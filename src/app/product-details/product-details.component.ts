@@ -43,7 +43,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   loadProductDetails(id: number) {
-    this.http.get<ProductDetailsResponse>(`https://localhost:7202/api/Customer/ECommerces/${id}`)
+    this.http.get<ProductDetailsResponse>(`http://pethospital.runasp.net/api/Customer/ECommerces/${id}`)
       .subscribe({
         next: (response) => {
           this.product = {

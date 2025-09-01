@@ -13,7 +13,7 @@ interface UserResponse {
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'https://localhost:7202/api/Admin/Users';
+  private apiUrl = 'http://pethospital.runasp.net/api/Admin/Users';
 
   constructor(private http: HttpClient) {}
 
