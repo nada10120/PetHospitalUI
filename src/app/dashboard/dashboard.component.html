@@ -1,0 +1,44 @@
+<div class="container my-5">
+  <h2 class="text-center mb-4 text-purple">✨ Admin Dashboard ✨</h2>
+
+  <!-- Alerts -->
+  <div *ngIf="successMessage" class="alert alert-success text-center rounded-pill shadow-sm">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger text-center rounded-pill shadow-sm">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Dashboard Cards -->
+  <div class="row g-4">
+    <div
+      class="col-md-4"
+      *ngFor="let card of [
+        {title:'Total Products', value:dashboardData.totalProducts, text:'Number of products in the system.', icon:'bi-box', color:'violet', route:'products'},
+        {title:'Total Categories', value:dashboardData.totalCategories, text:'Number of product categories.', icon:'bi-tags', color:'purple', route:'categories'},
+        {title:'Low Stock Products', value:dashboardData.lowStockProducts, text:'Products with stock quantity below 10.', icon:'bi-exclamation-triangle', color:'warning', route:'products'},
+        {title:'Total Users', value:dashboardData.totalUsers, text:'Number of registered users.', icon:'bi-people', color:'indigo', route:'users'},
+        {title:'Total Appointments', value:dashboardData.totalAppointments, text:'Number of scheduled appointments.', icon:'bi-calendar-check', color:'danger', route:'appointments'},
+        {title:'Total Pets', value:dashboardData.totalPets, text:'Number of pets registered.', icon:'bi-heart', color:'success', route:'pets'},
+        {title:'Total Posts', value:dashboardData.totalPosts, text:'Number of posts in the community.', icon:'bi-chat-dots', color:'pink', route:'posts'},
+        {title:'Total Comments', value:dashboardData.totalComments, text:'Number of comments in posts.', icon:'bi-chat-left-text', color:'teal', route:'comments'},
+        {title:'Total Carts', value:dashboardData.totalCarts, text:'Number of  carts.', icon:'bi-cart', color:'orange', route:'carts'},
+        {title:'Total Services', value:dashboardData.totalservices, text:'Number of  services.', icon:'bi-cart', color:'orange', route:'service'}
+      ]"
+    >
+      <div class="card dashboard-card text-center shadow-sm border-0 h-100">
+        <div class="card-body">
+          <div class="icon-circle mb-3 bg-{{card.color}}">
+            <i class="bi {{card.icon}}"></i>
+          </div>
+          <h5 class="card-title text-purple">{{ card.title }}</h5>
+          <h2 class="fw-bold display-6">{{ card.value }}</h2>
+          <p class="text-muted small">{{ card.text }}</p>
+          <button class="btn btn-outline-purple btn-sm mt-2" (click)="navigateTo(card.route)">
+            Manage
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

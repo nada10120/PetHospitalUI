@@ -1,0 +1,57 @@
+/* General Container */
+.container {
+  max-width: 1200px;
+}
+
+/* Title */
+h2.text-primary {
+  color: #6a0dad !important; /* Violet */
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Spinner */
+.spinner-border.text-primary {
+  color: #6a0dad !important;
+}
+
+/* Card */
+.card {
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(106, 13, 173, 0.2);
+}
+
+.card-title {
+  color: #6a0dad;
+  font-weight: 600;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #555 !important;
+}
+
+/* Price */
+.fw-bold {
+  color: #8a2be2; /* Purple */
+  font-size: 1.1rem;
+}
+
+/* Button */
+.btn-primary {
+  background: linear-gradient(135deg, #6a0dad, #8a2be2);
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #8a2be2, #6a0dad);
+  transform: scale(1.05);
+}

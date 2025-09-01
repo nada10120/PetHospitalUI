@@ -1,0 +1,22 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.alert {
+  margin-bottom: 20px;
+}
+
+.img-thumbnail {
+  max-width: 200px;
+  height: auto;
+}
+
+.table img {
+  max-width: 100px;
+  height: auto;
+}
+
+.btn-primary, .btn-secondary, .btn-warning, .btn-danger {
+  min-width: 100px;
+}

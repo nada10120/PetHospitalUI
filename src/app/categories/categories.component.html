@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  <h2>Categories Management</h2>
+
+  <button class="btn btn-success mb-3" (click)="showCreateForm()">Create Category</button>
+
+  <div *ngIf="successMessage" class="alert alert-success" role="alert">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    {{ errorMessage }}
+  </div>
+
+  <form *ngIf="showForm" [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Category Name</label>
+      <input type="text" class="form-control" id="name" formControlName="name" required>
+      <div *ngIf="categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched" class="text-danger">
+        Category name is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary me-2" [disabled]="categoryForm.invalid">
+        {{ editingCategoryId ? 'Update Category' : 'Create Category' }}
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </form>
+
+  <h3 class="mt-5">Categories List</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of categories">
+        <td>{{ category.categoryId }}</td>
+        <td>{{ category.name }}</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-2" (click)="editCategory(category)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteCategory(category.categoryId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

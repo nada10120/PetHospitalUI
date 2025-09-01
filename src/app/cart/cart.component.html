@@ -1,0 +1,50 @@
+<div class="container my-5">
+  <div class="cart-container card shadow-lg p-4 rounded-4" *ngIf="cartItems.length > 0; else emptyCart">
+    <h2 class="cart-title text-center mb-4">🛒 Your Cart</h2>
+
+    <div *ngFor="let item of cartItems" class="cart-item card mb-3 border-0 shadow-sm rounded-3">
+      <div class="card-body d-flex justify-content-between align-items-center">
+
+        <!-- Product Info -->
+        <div class="item-info">
+          <h5 class="item-name text-purple mb-1">{{ item.productName }}</h5>
+          <p class="item-price text-muted mb-0">{{ item.productPrice | currency }}</p>
+        </div>
+
+        <!-- Quantity Controls -->
+        <div class="quantity-controls d-flex align-items-center">
+          <button class="btn btn-sm btn-outline-purple me-2" (click)="decrement(item.productId)">➖</button>
+          <span class="px-2 fw-bold">{{ item.count }}</span>
+          <button class="btn btn-sm btn-outline-purple ms-2" (click)="increment(item.productId)">➕</button>
+        </div>
+
+        <!-- Remove Button -->
+        <button class="btn btn-sm btn-outline-danger ms-3" (click)="delete(item.productId)">❌</button>
+      </div>
+    </div>
+
+    <!-- Total -->
+    <div class="text-end mt-4">
+      <h3 class="total fw-bold">Total: <span class="text-purple">{{ totalPrice | currency }}</span></h3>
+    </div>
+  </div>
+
+  <!-- Empty Cart -->
+  <ng-template #emptyCart>
+    <div class="text-center py-5">
+      <p class="empty-text fs-4 text-muted">🛍️ Your cart is empty.</p>
+    </div>
+  </ng-template>
+  <!-- Total -->
+<div class="text-end mt-4">
+  <h3 class="total fw-bold">Total:
+    <span class="text-purple">{{ totalPrice | currency }}</span>
+  </h3>
+
+  <!-- Payment Button -->
+  <button class="btn btn-purple btn-lg mt-3" (click)="checkout()">
+    💳 Proceed to Payment
+  </button>
+</div>
+
+</div>

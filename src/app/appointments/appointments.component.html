@@ -1,0 +1,51 @@
+<div class="appointments-container">
+  <h2>📅 My Appointments</h2>
+
+  <div *ngIf="appointments.length === 0" class="empty-msg">
+    لا يوجد لديك أي حجوزات حالياً
+  </div>
+
+  <div *ngFor="let appointment of appointments" class="appointment-card">
+    <div class="info">
+      <p><strong>الطبيب:</strong> {{ appointment.vetName }}</p>
+      <p><strong>الحيوان:</strong> {{ appointment.petName }}</p>
+      <p><strong>الخدمة:</strong> {{ appointment.serviceName }}</p>
+      <p><strong>التاريخ:</strong> {{ appointment.appointmentDate | date:'yyyy-MM-dd' }}</p>
+      <p><strong>الحالة:</strong> {{ appointment.status }}</p>
+    </div>
+
+    <div class="actions">
+      <button class="btn edit" (click)="startEdit(appointment)">✏️ تعديل</button>
+      <button class="btn delete" (click)="deleteAppointment(appointment.appointmentId)">🗑 حذف</button>
+    </div>
+  </div>
+
+  <!-- Edit Form -->
+  <div *ngIf="editingAppointment" class="edit-form">
+    <h3>✏️ تعديل الحجز</h3>
+    <form [formGroup]="editForm" (ngSubmit)="saveEdit()">
+      <label>اختر الطبيب</label>
+      <select formControlName="vetId">
+        <option *ngFor="let v of vets" [value]="v.vetId">{{ v.name }}</option>
+      </select>
+
+      <label>اختر الحيوان</label>
+      <select formControlName="petId">
+        <option *ngFor="let p of pets" [value]="p.petId">{{ p.name }}</option>
+      </select>
+
+      <label>اختر الخدمة</label>
+      <select formControlName="serviceId">
+        <option *ngFor="let s of services" [value]="s.serviceId">{{ s.name }}</option>
+      </select>
+
+      <label>التاريخ</label>
+      <input type="date" formControlName="appointmentDate" />
+
+      <div class="form-actions">
+        <button type="submit" class="btn save">💾 حفظ</button>
+        <button type="button" class="btn cancel" (click)="cancelEdit()">❌ إلغاء</button>
+      </div>
+    </form>
+  </div>
+</div>

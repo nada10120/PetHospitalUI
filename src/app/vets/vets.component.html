@@ -1,0 +1,13 @@
+<div class="vets-container">
+  <h2 class="title">🐾 Meet Our Vets</h2>
+
+  <div class="vets-grid">
+    <div class="vet-card" *ngFor="let vet of vets">
+      <img [src]="vet.image " alt="Vet Photo" class="vet-img" />
+      <h3>{{ vet.name }}</h3>
+      <p><strong>Specialization:</strong> {{ vet.specialization }}</p>
+      <p><strong>Availability:</strong> {{ vet.availbility }}</p>
+      <button class="details-btn" (click)="goToDetails(vet.vetId)">View Details</button>
+    </div>
+  </div>
+</div>

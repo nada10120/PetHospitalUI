@@ -1,0 +1,59 @@
+<div class="container py-4" style="background: linear-gradient(to bottom right, #f3e8ff, #ddd6fe);">
+  <div *ngIf="product" class="row">
+    <!-- Product Image -->
+    <div class="col-md-6 mb-4">
+      <img [src]="product.imageUrl ? 'https://localhost:7202/' + product.imageUrl : 'https://via.placeholder.com/400x300?text=No+Image'"
+           [alt]="product.name" class="img-fluid rounded shadow-sm" style="max-height: 400px; object-fit: cover;"
+           >
+    </div>
+    <!-- Product Details -->
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h1 class="card-title text-primary mb-4">{{ product.name }}</h1>
+          <p class="text-success fs-4 mb-4">${{ product.price.toFixed(2) }}</p>
+          <p class="text-secondary mb-4">{{ product.description || 'No description available.' }}</p>
+          <button (click)="addToCart(product)" class="btn btn-primary btn-lg">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Related Products -->
+  <div class="mt-5">
+    <h2 class="text-primary mb-4">Related Products</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+      <div *ngFor="let related of relatedProducts" class="col">
+        <div class="card h-100 shadow-sm">
+          <img [src]="related.imageUrl ? 'https://localhost:7202/' + related.imageUrl : 'https://via.placeholder.com/300x200?text=No+Image'"
+               [alt]="related.name" class="card-img-top" style="height: 200px; object-fit: cover;"
+               >
+          <div class="card-body">
+            <h5 class="card-title text-primary">{{ related.name }}</h5>
+            <p class="card-text text-secondary">${{ related.price.toFixed(2) }}</p>
+            <a [routerLink]="['/store/details', related.productId]" class="btn btn-outline-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Same Category Products -->
+  <div class="mt-5">
+    <h2 class="text-primary mb-4">More in This Category</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+      <div *ngFor="let same of sameCategoryProducts" class="col">
+        <div class="card h-100 shadow-sm">
+          <img [src]="same.imageUrl ? 'https://localhost:7202/' + same.imageUrl : 'https://via.placeholder.com/300x200?text=No+Image'"
+               [alt]="same.name" class="card-img-top" style="height: 200px; object-fit: cover;"
+               >
+          <div class="card-body">
+            <h5 class="card-title text-primary">{{ same.name }}</h5>
+            <p class="card-text text-secondary">${{ same.price.toFixed(2) }}</p>
+            <a [routerLink]="['/store/details', same.productId]" class="btn btn-outline-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

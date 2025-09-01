@@ -1,0 +1,48 @@
+.contact-section {
+  background-color: #E6D7F5;
+}
+
+h2 {
+  color: #6B4E71;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  color: #6B4E71;
+  font-size: 1.5rem;
+}
+
+.card-text {
+  color: #333;
+  font-size: 1rem;
+}
+
+.form-label {
+  color: #6B4E71;
+}
+
+.form-control {
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #6B4E71;
+  border-color: #6B4E71;
+}
+
+.btn-primary:hover {
+  background-color: #8C6B93;
+  border-color: #8C6B93;
+}
+
+.btn-primary:disabled {
+  background-color: #a8a8a8;
+  border-color: #a8a8a8;
+}

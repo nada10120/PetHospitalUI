@@ -1,0 +1,68 @@
+<div class="container py-4" style="background: linear-gradient(to bottom right, #f3e8ff, #ddd6fe);">
+  <!-- Filter Section -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <h2 class="card-title text-primary mb-4">Filter Products</h2>
+      <div class="row g-3">
+        <div class="col-md-3">
+          <input [(ngModel)]="filters.search" (ngModelChange)="applyFilters()"
+                 class="form-control" placeholder="Search products...">
+        </div>
+        <div class="col-md-3">
+          <input [(ngModel)]="filters.productName" (ngModelChange)="applyFilters()"
+                 class="form-control" placeholder="Product name...">
+        </div>
+        <div class="col-md-3">
+          <div class="row g-2">
+            <div class="col">
+              <input [(ngModel)]="filters.minPrice" (ngModelChange)="applyFilters()"
+                     type="number" class="form-control" placeholder="Min price">
+            </div>
+            <div class="col">
+              <input [(ngModel)]="filters.maxPrice" (ngModelChange)="applyFilters()"
+                     type="number" class="form-control" placeholder="Max price">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <select [(ngModel)]="filters.categoryId" (ngModelChange)="applyFilters()"
+                  class="form-select">
+            <option [value]="undefined">All Categories</option>
+            <option *ngFor="let category of categories" [value]="category.categoryId">
+              {{ category.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Products Grid -->
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    <div *ngFor="let product of products" class="col">
+      <div class="card h-100 shadow-sm">
+        <img [src]="product.imageUrl ? 'https://localhost:7202/images/products/' + product.imageUrl : 'https://via.placeholder.com/300x200?text=No+Image'"
+        [alt]="product.name" class="card-img-top" style="height: 200px; object-fit: cover;">
+             <div class="card-body">
+          <h5 class="card-title text-primary">{{ product.name }}</h5>
+          <p class="card-text text-secondary">${{ product.price.toFixed(2) }}</p>
+          <div class="d-flex justify-content-between">
+            <a [routerLink]="['/store/details', product.productId]" class="btn btn-outline-primary">View Details</a>
+            <button (click)="addToCart(product)" class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="d-flex justify-content-center mt-4">
+    <nav>
+      <ul class="pagination">
+        <li *ngFor="let page of pagesArray" class="page-item" [class.active]="page === currentPage">
+          <button class="page-link" (click)="changePage(page)">{{ page }}</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

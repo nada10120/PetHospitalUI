@@ -1,0 +1,51 @@
+.details-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  background: #f4f0fa;
+  min-height: 100vh;
+}
+
+.card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 18px;
+  text-align: center;
+  width: 400px;
+  box-shadow: 0 8px 20px rgba(94, 62, 161, 0.2);
+}
+
+.vet-img {
+  width: 100%;
+  height: 220px;
+  object-fit: scale-down;
+  border-radius: 14px;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  color: #5e3ea1;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin: 0.4rem 0;
+  color: #444;
+}
+
+.book-btn {
+  margin-top: 1.5rem;
+  background: linear-gradient(90deg, #9b7ae5, #b492f0);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.book-btn:hover {
+  background: linear-gradient(90deg, #7a5acb, #9b7ae5);
+}

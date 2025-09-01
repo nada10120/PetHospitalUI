@@ -1,0 +1,114 @@
+<div class="container mt-4">
+  <h2>Pets Management</h2>
+
+  <!-- Create Pet Button -->
+  <button class="btn btn-success mb-3" (click)="showCreateForm()">Create Pet</button>
+
+  <!-- Success/Error Messages -->
+  <div *ngIf="successMessage" class="alert alert-success" role="alert">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Pet Form -->
+  <form *ngIf="showForm" [formGroup]="petForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="userId" class="form-label">User</label>
+      <select class="form-select" id="userId" formControlName="userId" required>
+        <option value="">Select User</option>
+        <option *ngFor="let user of users" [value]="user.id">{{ user.userName }}</option>
+      </select>
+      <div *ngIf="petForm.get('userId')?.invalid && petForm.get('userId')?.touched" class="text-danger">
+        User is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="name" class="form-label">Pet Name</label>
+      <input type="text" class="form-control" id="name" formControlName="name" required>
+      <div *ngIf="petForm.get('name')?.invalid && petForm.get('name')?.touched" class="text-danger">
+        Pet name is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="type" class="form-label">Type</label>
+      <select class="form-select" id="type" formControlName="type" required>
+        <option value="">Select Type</option>
+        <option value="Cat">Cat</option>
+        <option value="Dog">Dog</option>
+        <option value="Bird">Bird</option>
+        <option value="Other">Other</option>
+      </select>
+      <div *ngIf="petForm.get('type')?.invalid && petForm.get('type')?.touched" class="text-danger">
+        Pet type is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="breed" class="form-label">Breed</label>
+      <select class="form-select" id="breed" formControlName="breed">
+        <option value="">Select Breed</option>
+        <option *ngFor="let breed of breeds" [value]="breed">{{ breed }}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="age" class="form-label">Age</label>
+      <input type="number" class="form-control" id="age" formControlName="age" min="0">
+      <div *ngIf="petForm.get('age')?.invalid && petForm.get('age')?.touched" class="text-danger">
+        Age must be a positive number.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="medicalHistory" class="form-label">Medical History</label>
+      <textarea class="form-control" id="medicalHistory" formControlName="medicalHistory"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="profilePicture" class="form-label">Profile Picture</label>
+      <input type="file" class="form-control" id="profilePicture" (change)="onFileSelected($event)" accept="image/*">
+      <div *ngIf="petForm.get('profilePicture')?.value" class="mt-2">
+        <img [src]="'https://localhost:7202/images/pets_profile/' + petForm.get('profilePicture')?.value" alt="Pet Profile Picture" class="img-thumbnail" style="max-width: 200px;">
+      </div>
+    </div>
+    <input type="hidden" formControlName="profilePicture">
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary me-2" [disabled]="petForm.invalid">
+        {{ editingPetId ? 'Update Pet' : 'Create Pet' }}
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </form>
+
+  <!-- Pets List -->
+  <h3 class="mt-5">Pets List</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Breed</th>
+        <th>Age</th>
+        <th>Medical History</th>
+        <th>Profile Picture</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pet of pets">
+        <td>{{ pet.petId }}</td>
+        <td>{{ pet.name }}</td>
+        <td>{{ pet.type }}</td>
+        <td>{{ pet.breed }}</td>
+        <td>{{ pet.age }}</td>
+        <td>{{ pet.medicalHistory }}</td>
+        <td>
+          <img *ngIf="pet.profilePicture" [src]="'https://localhost:7202/images/pets_profile/' + pet.profilePicture" alt="Pet" class="img-thumbnail" style="max-width: 100px;">
+        </td>
+        <td>
+          <button class="btn btn-sm btn-warning me-2" (click)="editPet(pet)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deletePet(pet.petId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,31 @@
+<div class="pet-container">
+  <h2>🐾 My Pets</h2>
+
+  <!-- Add / Edit Pet Form -->
+  <form [formGroup]="petForm" (ngSubmit)="submitForm()" class="pet-form">
+    <input type="text" formControlName="name" placeholder="Pet Name" />
+    <input type="text" formControlName="type" placeholder="Type (Dog, Cat...)" />
+    <input type="text" formControlName="breed" placeholder="Breed" />
+    <input type="number" formControlName="age" placeholder="Age" />
+    <textarea formControlName="medicalHistory" placeholder="Medical History"></textarea>
+    <input type="file" (change)="onFileChange($event)" />
+
+    <button type="submit">{{ editingPet ? 'Update Pet' : 'Add Pet' }}</button>
+    <button type="button" (click)="cancelEdit()" *ngIf="editingPet">Cancel</button>
+  </form>
+
+  <!-- Pet List -->
+  <div class="pet-list">
+    <div *ngFor="let pet of pets" class="pet-card">
+      <img *ngIf="pet.profilePicture" [src]="'https://localhost:7202/images/pets_profile/'+pet.profilePicture" alt="Pet Image"  height="200px" width="200px"/>
+      <h3>{{ pet.name }}</h3>
+      <p>Type: {{ pet.type }}</p>
+      <p>Breed: {{ pet.breed }}</p>
+      <p>Age: {{ pet.age }}</p>
+      <p>History: {{ pet.medicalHistory }}</p>
+
+      <button (click)="editPet(pet)">Edit</button>
+      <button (click)="deletePet(pet.petId)">Delete</button>
+    </div>
+  </div>
+</div>

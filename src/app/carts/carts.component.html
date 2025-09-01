@@ -1,0 +1,18 @@
+<div class="cart-list-container">
+  <h2>User Carts</h2>
+
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  <div *ngIf="isLoading" class="loading">Loading...</div>
+
+  <div *ngIf="userCarts.length > 0">
+    <div *ngFor="let cart of userCarts" class="cart-card">
+      <h4>User: {{ cart.userName }}</h4>
+      <p>Number of Products: {{ cart.productsCount }}</p>
+      <button (click)="deleteUserCart(cart.userId)" class="delete-btn">Delete Cart</button>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading && userCarts.length === 0">
+    No carts found.
+  </div>
+</div>

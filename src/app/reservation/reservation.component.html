@@ -1,0 +1,35 @@
+<!-- reservation.component.html -->
+<div class="reservation-container">
+  <h2>🟣 Book a Reservation</h2>
+
+  <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+
+    <!-- Vet اختيار -->
+    <label>Choose Vet:</label>
+    <select formControlName="vetId">
+      <option *ngFor="let vet of vets" [value]="vet.vetId">{{ vet.name }}</option>
+    </select>
+
+    <!-- Pet اختيار -->
+    <label>Choose Pet:</label>
+    <select formControlName="petId">
+      <option *ngFor="let pet of pets" [value]="pet.petId">{{ pet.name }}</option>
+    </select>
+    <label>Choose Service:</label>
+    <select formControlName="serviceId">
+      <option *ngFor="let service of services" [value]="service.serviceId">{{ service.name }}</option>
+    </select>
+
+    <!-- Date -->
+    <label>Date:</label>
+    <input type="date" formControlName="date" [min]="minDate" />
+
+    <!-- Time -->
+    <label>Time:</label>
+    <select formControlName="time">
+      <option *ngFor="let t of timeSlots" [value]="t">{{ t }}</option>
+    </select>
+
+    <button type="submit" [disabled]="reservationForm.invalid">Reserve</button>
+  </form>
+</div>

@@ -1,0 +1,40 @@
+<!-- service-details.component.html -->
+<div class="container my-5">
+  <h2 class="text-center text-primary mb-4">Our Services</h2>
+
+  <!-- Loading -->
+  <div *ngIf="isLoading" class="text-center">
+    <div class="spinner-border text-primary"></div>
+    <p>Loading services...</p>
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="errorMessage" class="alert alert-danger text-center">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Services Grid -->
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let service of services">
+      <div class="card shadow-sm border-light h-100">
+        <!-- Service Image -->
+        <img [src]="'https://localhost:7202/images/services/'+service.imageUrl || 'assets/default-service.jpg'"
+             class="card-img-top img-fluid"
+             alt="{{service.name}}"
+             >
+
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title text-primary">{{ service.name }}</h5>
+          <p class="card-text text-muted">{{ service.description }}</p>
+          <p class="fw-bold">💵 Price: {{ service.price | currency }}</p>
+
+          <!-- Book Button -->
+          <button (click)="bookAppointment(service.serviceId)"
+                  class="btn btn-primary mt-auto">
+            📅 Book Appointment
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

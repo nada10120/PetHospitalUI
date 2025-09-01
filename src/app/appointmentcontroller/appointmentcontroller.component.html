@@ -1,0 +1,109 @@
+<div class="container mt-4">
+  <h2>Appointments Management</h2>
+
+  <button class="btn btn-success mb-3" (click)="showCreateForm()">Create Appointment</button>
+
+  <div *ngIf="successMessage" class="alert alert-success" role="alert">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    {{ errorMessage }}
+  </div>
+
+  <form *ngIf="showForm" [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="userId" class="form-label">User</label>
+      <select class="form-select" id="userId" formControlName="userId" required>
+        <option value="">Select User</option>
+        <option *ngFor="let user of users" [value]="user.id">{{ user.userName }}</option>
+      </select>
+      <div *ngIf="appointmentForm.get('userId')?.invalid && appointmentForm.get('userId')?.touched" class="text-danger">
+        User is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="petId" class="form-label">Pet</label>
+      <select class="form-select" id="petId" formControlName="petId" required>
+        <option value="">Select Pet</option>
+        <option *ngFor="let pet of pets" [value]="pet.petId">{{ pet.name }}</option>
+      </select>
+      <div *ngIf="appointmentForm.get('petId')?.invalid && appointmentForm.get('petId')?.touched" class="text-danger">
+        Pet is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="vetId" class="form-label">Vet</label>
+      <select class="form-select" id="vetId" formControlName="vetId" required [disabled]="vets.length === 0">
+        <option value="">Select Vet</option>
+        <option *ngFor="let vet of vets" [value]="vet.id">{{ vet.userName }}</option>
+      </select>
+      <div *ngIf="appointmentForm.get('vetId')?.invalid && appointmentForm.get('vetId')?.touched" class="text-danger">
+        Vet is required.
+      </div>
+      <div *ngIf="vets.length === 0" class="text-danger">
+        No veterinarians available.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="serviceId" class="form-label">Service</label>
+      <select class="form-select" id="serviceId" formControlName="serviceId" required>
+        <option value="">Select Service</option>
+        <option *ngFor="let service of services" [value]="service.serviceId">{{ service.name }}</option>
+      </select>
+      <div *ngIf="appointmentForm.get('serviceId')?.invalid && appointmentForm.get('serviceId')?.touched" class="text-danger">
+        Service is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="dateTime" class="form-label">Date & Time</label>
+      <input type="datetime-local" class="form-control" id="dateTime" formControlName="dateTime" required>
+      <div *ngIf="appointmentForm.get('dateTime')?.invalid && appointmentForm.get('dateTime')?.touched" class="text-danger">
+        Date and time are required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="status" class="form-label">Status</label>
+      <select class="form-select" id="status" formControlName="status" required>
+        <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+      </select>
+      <div *ngIf="appointmentForm.get('status')?.invalid && appointmentForm.get('status')?.touched" class="text-danger">
+        Status is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary me-2" [disabled]="appointmentForm.invalid || vets.length === 0">
+        {{ editingAppointmentId ? 'Update Appointment' : 'Create Appointment' }}
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </form>
+
+  <h3 class="mt-5">Appointments List</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>User</th>
+        <th>Pet</th>
+        <th>Vet</th>
+        <th>Date & Time</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let appointment of appointments">
+        <td>{{ appointment.appointmentId }}</td>
+        <td>{{ getUserName(appointment.userId) }}</td>
+        <td>{{ getPetName(appointment.petId) }}</td>
+        <td>{{ getVetName(appointment.vetId) }}</td>
+        <td>{{ appointment.dateTime | date:'medium' }}</td>
+        <td>{{ appointment.status }}</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-2" (click)="editAppointment(appointment)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteAppointment(appointment.appointmentId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

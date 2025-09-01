@@ -1,0 +1,66 @@
+<div class="community-container">
+  <h2>🐾 Community</h2>
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  <!-- Loading Indicator -->
+  <div *ngIf="isLoading" class="loading">
+    Loading...
+  </div>
+  <!-- Create Post -->
+  <div class="create-post">
+    <textarea
+      [(ngModel)]="newPostContent"
+      placeholder="What's on your mind?"
+      maxlength="1000"
+      [disabled]="isLoading"
+    ></textarea>
+    <input
+      type="file"
+      (change)="onFileSelected($event)"
+      accept="image/*"
+      [disabled]="isLoading"
+    />
+    <button
+      (click)="createPost()"
+      [disabled]="isLoading || !newPostContent.trim()"
+    >Post</button>
+  </div>
+  <!-- Posts List -->
+  <div *ngFor="let post of posts" class="post-card">
+    <div class="post-header">
+      <strong>{{ post.userName }}</strong>
+      <span class="date">{{ post.createdAt | date:'short' }}</span>
+    </div>
+    <p>{{ post.content }}</p>
+    <img *ngIf="post.mediaUrl" [src]="'https://localhost:7202/'+post.mediaUrl" class="post-image" alt="Post image" />
+    <div class="post-actions">
+
+      <button
+        (click)="loadComments(post.postId)"
+        [disabled]="isLoading"
+      >💬 Comments</button>
+    </div>
+    <!-- Comments Section -->
+    <div class="comments-section" *ngIf="true">
+      <div *ngIf="comments[post.postId]">
+        <div *ngFor="let c of comments[post.postId]" class="comment">
+          <strong>{{ c.userName }}</strong>: {{ c.content }}
+          <span class="date">{{ c.createdAt | date:'short' }}</span>
+        </div>
+      </div>
+      <input
+        [(ngModel)]="commentInputs[post.postId]"
+        placeholder="Write a comment..."
+        maxlength="500"
+        [disabled]="isLoading"
+      />
+      <button
+        (click)="addComment(post.postId)"
+        [disabled]="isLoading || !commentInputs[post.postId]"
+      >Send</button>
+    </div>
+
+  </div>
+</div>

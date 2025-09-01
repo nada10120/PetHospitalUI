@@ -1,0 +1,10 @@
+<div class="details-container" *ngIf="vet">
+  <div class="card">
+    <img [src]="vet.image || 'assets/default-vet.png'" alt="Vet Photo" class="vet-img" />
+    <h2>{{ vet.name }}</h2>
+    <p><strong>Specialization:</strong> {{ vet.specialization }}</p>
+    <p><strong>Availability:</strong> {{ vet.availability }}</p>
+    <p><strong>Contact:</strong> {{ vet.contact }}</p>
+    <button class="book-btn" (click)="bookNow()">Book Now</button>
+  </div>
+</div>

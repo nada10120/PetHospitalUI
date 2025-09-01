@@ -1,0 +1,70 @@
+.pets-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background: #f8f4ff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(128, 0, 128, 0.2);
+}
+
+h2 {
+  text-align: center;
+  color: #5e2ca5;
+  margin-bottom: 20px;
+}
+
+.pet-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.pet-form input {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #c3a6ff;
+  border-radius: 10px;
+  background: #fff;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-save {
+  background: #7d3cff;
+  color: white;
+}
+
+.btn-cancel {
+  background: #bbb;
+  color: white;
+}
+
+.pets-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.pet-card {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(128, 0, 128, 0.15);
+}
+
+.pet-card h3 {
+  color: #5e2ca5;
+}
+.btn-edit {
+  margin-top: 10px;
+  background: #c084fc;
+  color: white;
+}

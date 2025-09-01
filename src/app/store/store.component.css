@@ -1,0 +1,101 @@
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filters input, .filters select {
+  padding: 8px;
+  width: 200px;
+}
+
+.filters button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.filters button:hover {
+  background-color: #0056b3;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.quantity-selector {
+  margin: 10px 0;
+}
+
+.quantity-selector input {
+  width: 60px;
+  margin-left: 10px;
+}
+
+.product-card button, .pagination button, button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.product-card button:disabled, .pagination button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.product-card button:hover:not(:disabled), .pagination button:hover:not(:disabled), button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination button {
+  margin: 0 5px;
+}
+
+.pagination .active {
+  background-color: #0056b3;
+}
+
+.alert {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}

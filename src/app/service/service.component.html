@@ -1,0 +1,79 @@
+<div class="container mt-4">
+  <h2>Services Management</h2>
+
+  <button class="btn btn-success mb-3" (click)="showCreateForm()">Create Service</button>
+
+  <div *ngIf="successMessage" class="alert alert-success" role="alert">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    {{ errorMessage }}
+  </div>
+
+  <form *ngIf="showForm" [formGroup]="serviceForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Service Name</label>
+      <input type="text" class="form-control" id="name" formControlName="name" required>
+      <div *ngIf="serviceForm.get('name')?.invalid && serviceForm.get('name')?.touched" class="text-danger">
+        Service name is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" formControlName="description" required></textarea>
+      <div *ngIf="serviceForm.get('description')?.invalid && serviceForm.get('description')?.touched" class="text-danger">
+        Description is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">Price</label>
+      <input type="number" class="form-control" id="price" formControlName="price" min="0" step="0.01" required>
+      <div *ngIf="serviceForm.get('price')?.invalid && serviceForm.get('price')?.touched" class="text-danger">
+        Price must be a positive number.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="imageUrl" class="form-label">Service Image</label>
+      <input type="file" class="form-control" id="imageUrl" (change)="onFileSelected($event)" accept="image/*">
+      <div *ngIf="serviceForm.get('imageUrl')?.value" class="mt-2">
+        <img [src]="'https://localhost:7202/images/Services/' + serviceForm.get('imageUrl')?.value" alt="Service Image" class="img-thumbnail" style="max-width: 200px;">
+      </div>
+    </div>
+    <input type="hidden" formControlName="imageUrl">
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary me-2" [disabled]="serviceForm.invalid">
+        {{ editingServiceId ? 'Update Service' : 'Create Service' }}
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </form>
+
+  <h3 class="mt-5">Services List</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Image</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let service of services">
+        <td>{{ service.serviceId }}</td>
+        <td>{{ service.name }}</td>
+        <td>{{ service.description }}</td>
+        <td>{{ service.price | currency }}</td>
+        <td>
+          <img *ngIf="service.imageUrl" [src]="'https://localhost:7202/images/Services/' + service.imageUrl" alt="Service" class="img-thumbnail" style="max-width: 100px;">
+        </td>
+        <td>
+          <button class="btn btn-sm btn-warning me-2" (click)="editService(service)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteService(service.serviceId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,124 @@
+/* Container padding & margin */
+.container {
+  padding: 20px;
+  background-color: #f8f6ff; /* soft violet background */
+  border-radius: 10px;
+}
+
+/* Heading style */
+h2 {
+  color: #5c3c99; /* deep purple */
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Table styles */
+table {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+thead {
+  background-color: #7e57c2; /* violet header */
+  color: white;
+}
+
+th, td {
+  text-align: center;
+  padding: 12px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f3f0ff; /* light violet stripe */
+}
+
+tbody tr:hover {
+  background-color: #e0d7ff; /* hover effect */
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #7e57c2;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #5c3c99;
+}
+
+.btn-warning {
+  background-color: #ffb74d;
+  border: none;
+}
+
+.btn-warning:hover {
+  background-color: #ffa726;
+}
+
+.btn-danger {
+  background-color: #e57373;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #ef5350;
+}
+
+.btn-secondary {
+  background-color: #b39ddb;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #9575cd;
+}
+
+/* Form card */
+.card {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  background-color: #fdfcff;
+}
+
+.card-header {
+  background-color: #7e57c2;
+  color: white;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+/* Form labels */
+.form-label {
+  font-weight: 500;
+  color: #5c3c99;
+}
+
+/* Inputs & selects */
+input.form-control,
+textarea.form-control,
+select.form-control {
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: all 0.2s;
+}
+
+input.form-control:focus,
+textarea.form-control:focus,
+select.form-control:focus {
+  border-color: #7e57c2;
+  box-shadow: 0 0 5px rgba(126,87,194,0.3);
+}
+
+/* Validation messages */
+.text-danger {
+  font-size: 0.85rem;
+}
+
+/* Image styling */
+img {
+  border-radius: 6px;
+  object-fit: cover;
+}

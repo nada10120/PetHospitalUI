@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #9f64f1;">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="">Pet Hospital</a>
+    <ng-container *ngIf="authService.isLoggedIn()">
+      <span class="navbar-brand" >Welcome, {{ authService.getUserName() }}</span>
+    </ng-container>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item" *ngIf="authService.isLoggedIn() && authService.isAdmin()">
+          <a class="nav-link" routerLink="/admin">Admin</a>
+        </li>
+
+        <li class="nav-item" *ngIf="authService.isLoggedIn()">
+          <a routerLink="addpet" class="nav-link">Pets</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="store" routerLinkActive="active">Store</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="reservation" routerLinkActive="active">Reservation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="appointments" routerLinkActive="active">Appointments</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="community" routerLinkActive="active">Community</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="services-details" routerLinkActive="active">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="vets" routerLinkActive="active">Veteriarians</a>
+        </li>
+        <li class="nav-item" *ngIf="authService.isLoggedIn()">
+          <a class="nav-link" routerLink="/cart" >Cart</a>
+        </li>
+        <li class="nav-item" *ngIf="!authService.isLoggedIn()">
+          <a class="nav-link" routerLink="/login" >Login</a>
+        </li>
+        <li class="nav-item" *ngIf="!authService.isLoggedIn()">
+          <a class="nav-link" routerLink="/register" >SignUp</a>
+        </li>
+        <li class="nav-item" *ngIf="authService.isLoggedIn()">
+          <a href="#" class="nav-link" (click)="logout()" >Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+

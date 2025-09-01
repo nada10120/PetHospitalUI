@@ -1,0 +1,76 @@
+<div class="container mt-4">
+  <h2>Products Management</h2>
+  <button class="btn btn-primary mb-3" (click)="openCreateForm()">Add New Product</button>
+
+  <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Stock</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td><img [src]="'https://localhost:7202/images/products/'+product.imageUrl" width="50" height="50" /></td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.categoryName }}</td>
+        <td>{{ product.stockQuantity }}</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-2" (click)="openEditForm(product)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteProduct(product.productId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="isFormVisible" class="card mt-4">
+    <div class="card-header">{{ isEditMode ? 'Edit Product' : 'Create Product' }}</div>
+    <div class="card-body">
+      <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-control" [(ngModel)]="formData.name" name="name" required />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Description</label>
+          <textarea class="form-control" [(ngModel)]="formData.description" name="description"></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Price</label>
+          <input type="number" class="form-control" [(ngModel)]="formData.price" name="price" required />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Stock Quantity</label>
+          <input type="number" class="form-control" [(ngModel)]="formData.stockQuantity" name="stockQuantity" required />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Category</label>
+          <select class="form-control" [(ngModel)]="formData.categoryId" name="categoryId" required>
+            <option value="">Select Category</option>
+            <option *ngFor="let cat of categories" [value]="cat.categoryId">{{ cat.name }}</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Image</label>
+          <input type="file" class="form-control" (change)="onFileSelected($event)" />
+          <div *ngIf="isEditMode && formData.imageUrl" class="mt-2">
+            <img [src]="getImageUrl(formData.imageUrl)" width="100" height="100" />
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Update' : 'Create' }}</button>
+        <button type="button" class="btn btn-secondary ms-2" (click)="cancelForm()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>

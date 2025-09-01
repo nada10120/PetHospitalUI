@@ -1,0 +1,24 @@
+<div class="comment-list-container">
+  <h2>Comments</h2>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="isLoading" class="loading">
+    Loading comments...
+  </div>
+
+  <div *ngIf="comments.length > 0">
+    <div *ngFor="let comment of comments" class="comment-card">
+      <h4>{{ comment.userName || 'Unknown User' }}</h4>
+      <p>{{ comment.content }}</p>
+      <small>Post ID: {{ comment.postId }}</small>
+      <button (click)="deleteComment(comment.commentId)" class="delete-btn">Delete</button>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading && comments.length === 0">
+    No comments found.
+  </div>
+</div>

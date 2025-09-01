@@ -1,0 +1,26 @@
+.text-purple {
+  color: #6a0dad; /* Violet */
+}
+
+.btn-outline-purple {
+  border-color: #a64ca6;
+  color: #6a0dad;
+}
+
+.btn-outline-purple:hover {
+  background-color: #a64ca6;
+  color: white;
+}
+
+.cart-title {
+  color: #6a0dad;
+  font-weight: bold;
+}
+
+.cart-item {
+  background: #f9f5ff;
+}
+
+.total span {
+  color: #6a0dad;
+}
