@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
   errorMessage: string | null = null;
   successMessage: string | null = null;
 
-  private apiUrl = 'http://pethospital.runasp.net/Admin/Dashboard';
+  private apiUrl = 'https://pethospital.runasp.net/Admin/Dashboard';
 
   constructor(private http: HttpClient, private router: Router) {}
 

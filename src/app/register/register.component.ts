@@ -48,7 +48,7 @@ export class RegisterComponent {
       formDataToSend.append('ProfilePicture', this.selectedFile);
     }
 
-    this.http.post('http://pethospital.runasp.net/Identity/Account/Register', formDataToSend)
+    this.http.post('https://pethospital.runasp.net/Identity/Account/Register', formDataToSend)
       .subscribe({
         next: (res) => {
           console.log('Success', res);

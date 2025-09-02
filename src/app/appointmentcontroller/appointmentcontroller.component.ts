@@ -44,7 +44,7 @@ interface ServiceResponse {
 
 @Injectable()
 class AppointmentService {
-  private apiUrl = 'http://pethospital.runasp.net/Admin/Appointments';
+  private apiUrl = 'https://pethospital.runasp.net/Admin/Appointments';
 
   constructor(private http: HttpClient) {}
 
@@ -100,7 +100,7 @@ class AppointmentService {
 
 @Injectable()
 class UserService {
-  private apiUrl = 'http://pethospital.runasp.net/Admin/Users';
+  private apiUrl = 'https://pethospital.runasp.net/Admin/Users';
 
   constructor(private http: HttpClient) {}
 
@@ -128,7 +128,7 @@ class UserService {
 
 @Injectable()
 class PetService {
-  private apiUrl = 'http://pethospital.runasp.net/Admin/Pets';
+  private apiUrl = 'https://pethospital.runasp.net/Admin/Pets';
 
   constructor(private http: HttpClient) {}
 
@@ -156,7 +156,7 @@ class PetService {
 
 @Injectable()
 class ServiceService {
-  private apiUrl = 'http://pethospital.runasp.net/Admin/Services';
+  private apiUrl = 'https://pethospital.runasp.net/Admin/Services';
 
   constructor(private http: HttpClient) {}
 

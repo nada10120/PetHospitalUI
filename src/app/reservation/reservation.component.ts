@@ -35,7 +35,7 @@ export class ReservationComponent implements OnInit {
   timeSlots: string[] = [];
   minDate: string = new Date().toISOString().split('T')[0]; // يمنع الايام القديمة
 
-  private apiUrl = 'http://pethospital.runasp.net/Customer/Reservation';
+  private apiUrl = 'https://pethospital.runasp.net/Customer/Reservation';
 
   constructor(private fb: FormBuilder, private http: HttpClient,private authservice:AuthService) {}
 
@@ -62,13 +62,13 @@ export class ReservationComponent implements OnInit {
   }
 
   loadPets() {
-    this.http.get<any[]>(`http://pethospital.runasp.net/Admin/Pets/GetAllByUser/${this.authservice.getCurrentUserId()}`).subscribe({
+    this.http.get<any[]>(`https://pethospital.runasp.net/Admin/Pets/GetAllByUser/${this.authservice.getCurrentUserId()}`).subscribe({
       next: (data) => (this.pets = data),
       error: (err) => console.error(err),
     });
   }
   loadServices(){
-    this.http.get<any[]>(`http://pethospital.runasp.net/Admin/Services`).subscribe(
+    this.http.get<any[]>(`https://pethospital.runasp.net/Admin/Services`).subscribe(
       {
         next: (data) => (this.services = data),
         error: (err) => console.error(err),
@@ -113,7 +113,7 @@ export class ReservationComponent implements OnInit {
       status: "Pending"
     };
 
-    this.http.post(`http://pethospital.runasp.net/Admin/Appointments`, reservation).subscribe({
+    this.http.post(`https://pethospital.runasp.net/Admin/Appointments`, reservation).subscribe({
       next: () => alert('تم الحجز بنجاح 🎉'),
       error: (err) => alert('خطأ في الحجز ❌ ' + err.message),
     });

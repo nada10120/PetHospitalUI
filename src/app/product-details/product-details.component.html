@@ -2,7 +2,7 @@
   <div *ngIf="product" class="row">
     <!-- Product Image -->
     <div class="col-md-6 mb-4">
-      <img [src]="product.imageUrl ? 'http://pethospital.runasp.net/' + product.imageUrl : 'https://via.placeholder.com/400x300?text=No+Image'"
+      <img [src]="product.imageUrl ? 'https://pethospital.runasp.net/' + product.imageUrl : 'https://via.placeholder.com/400x300?text=No+Image'"
            [alt]="product.name" class="img-fluid rounded shadow-sm" style="max-height: 400px; object-fit: cover;"
            >
     </div>
@@ -25,7 +25,7 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
       <div *ngFor="let related of relatedProducts" class="col">
         <div class="card h-100 shadow-sm">
-          <img [src]="related.imageUrl ? 'http://pethospital.runasp.net/' + related.imageUrl : 'https://via.placeholder.com/300x200?text=No+Image'"
+          <img [src]="related.imageUrl ? 'https://pethospital.runasp.net/' + related.imageUrl : 'https://via.placeholder.com/300x200?text=No+Image'"
                [alt]="related.name" class="card-img-top" style="height: 200px; object-fit: cover;"
                >
           <div class="card-body">
@@ -44,7 +44,7 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
       <div *ngFor="let same of sameCategoryProducts" class="col">
         <div class="card h-100 shadow-sm">
-          <img [src]="same.imageUrl ? 'http://pethospital.runasp.net/' + same.imageUrl : 'https://via.placeholder.com/300x200?text=No+Image'"
+          <img [src]="same.imageUrl ? 'https://pethospital.runasp.net/' + same.imageUrl : 'https://via.placeholder.com/300x200?text=No+Image'"
                [alt]="same.name" class="card-img-top" style="height: 200px; object-fit: cover;"
                >
           <div class="card-body">

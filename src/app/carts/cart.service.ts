@@ -12,7 +12,7 @@ export interface UserCartSummary {
   providedIn: 'root'
 })
 export class CartService {
-  private apiUrl = 'http://pethospital.runasp.net/Admin/Carts';
+  private apiUrl = 'https://pethospital.runasp.net/Admin/Carts';
 
   constructor(private http: HttpClient) { }
 

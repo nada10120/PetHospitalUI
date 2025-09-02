@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class VetService {
-  private apiUrl = 'http://pethospital.runasp.net/Customer/Details';
+  private apiUrl = 'https://pethospital.runasp.net/Customer/Details';
 
   constructor(private http: HttpClient) {}
 

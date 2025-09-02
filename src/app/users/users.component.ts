@@ -50,7 +50,7 @@ export class UsersComponent implements OnInit {
   errorMessage: string | null = null;
   successMessage: string | null = null;
 
-  private apiUrl = 'http://pethospital.runasp.net/Admin/Users';
+  private apiUrl = 'https://pethospital.runasp.net/Admin/Users';
   private defaultProfilePicture = '/assets/images/default-profile.png';
 
   constructor(private http: HttpClient) {}
@@ -75,7 +75,7 @@ export class UsersComponent implements OnInit {
   }
 
   getProfilePictureUrl(fileName: string | null): string {
-    return fileName ? `http://pethospital.runasp.net/images/profile/${fileName}` : this.defaultProfilePicture;
+    return fileName ? `https://pethospital.runasp.net/images/profile/${fileName}` : this.defaultProfilePicture;
   }
 
   handleImageError(event: Event): void {
@@ -116,7 +116,7 @@ export class UsersComponent implements OnInit {
 
   private async getVetDetails(userId: string): Promise<{ specialization: string; availabilitySchedule: string } | null> {
     try {
-      const vetDetails = await lastValueFrom(this.http.get<{ specialization: string; availabilitySchedule: string }>(`http://pethospital.runasp.net/Vets/${userId}`));
+      const vetDetails = await lastValueFrom(this.http.get<{ specialization: string; availabilitySchedule: string }>(`https://pethospital.runasp.net/Vets/${userId}`));
       console.log('Vet details fetched for user:', userId, vetDetails);
       return vetDetails || null;
     } catch (err) {
