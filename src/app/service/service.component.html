@@ -36,7 +36,7 @@
       <label for="imageUrl" class="form-label">Service Image</label>
       <input type="file" class="form-control" id="imageUrl" (change)="onFileSelected($event)" accept="image/*">
       <div *ngIf="serviceForm.get('imageUrl')?.value" class="mt-2">
-        <img [src]="'https://pethospital.runasp.net/images/Services/' + serviceForm.get('imageUrl')?.value" alt="Service Image" class="img-thumbnail" style="max-width: 200px;">
+        <img [src]="'https://pethospital.runasp.net/api/images/Services/' + serviceForm.get('imageUrl')?.value" alt="Service Image" class="img-thumbnail" style="max-width: 200px;">
       </div>
     </div>
     <input type="hidden" formControlName="imageUrl">
@@ -67,7 +67,7 @@
         <td>{{ service.description }}</td>
         <td>{{ service.price | currency }}</td>
         <td>
-          <img *ngIf="service.imageUrl" [src]="'https://pethospital.runasp.net/images/Services/' + service.imageUrl" alt="Service" class="img-thumbnail" style="max-width: 100px;">
+          <img *ngIf="service.imageUrl" [src]="'https://pethospital.runasp.net/api/images/Services/' + service.imageUrl" alt="Service" class="img-thumbnail" style="max-width: 100px;">
         </td>
         <td>
           <button class="btn btn-sm btn-warning me-2" (click)="editService(service)">Edit</button>

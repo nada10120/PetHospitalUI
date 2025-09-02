@@ -34,7 +34,7 @@
       <span class="date">{{ post.createdAt | date:'short' }}</span>
     </div>
     <p>{{ post.content }}</p>
-    <img *ngIf="post.mediaUrl" [src]="'https://pethospital.runasp.net/'+post.mediaUrl" class="post-image" alt="Post image" />
+    <img *ngIf="post.mediaUrl" [src]="'https://pethospital.runasp.net/api/'+post.mediaUrl" class="post-image" alt="Post image" />
     <div class="post-actions">
 
       <button

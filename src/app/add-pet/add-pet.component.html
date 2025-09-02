@@ -17,7 +17,7 @@
   <!-- Pet List -->
   <div class="pet-list">
     <div *ngFor="let pet of pets" class="pet-card">
-      <img *ngIf="pet.profilePicture" [src]="'https://pethospital.runasp.net/images/pets_profile/'+pet.profilePicture" alt="Pet Image"  height="200px" width="200px"/>
+      <img *ngIf="pet.profilePicture" [src]="'https://pethospital.runasp.net/api/images/pets_profile/'+pet.profilePicture" alt="Pet Image"  height="200px" width="200px"/>
       <h3>{{ pet.name }}</h3>
       <p>Type: {{ pet.type }}</p>
       <p>Breed: {{ pet.breed }}</p>

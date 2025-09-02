@@ -41,7 +41,7 @@
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
     <div *ngFor="let product of products" class="col">
       <div class="card h-100 shadow-sm">
-        <img [src]="product.imageUrl ? 'https://pethospital.runasp.net/images/products/' + product.imageUrl : 'https://via.placeholder.com/300x200?text=No+Image'"
+        <img [src]="product.imageUrl ? 'https://pethospital.runasp.net/api/images/products/' + product.imageUrl : 'https://via.placeholder.com/300x200?text=No+Image'"
         [alt]="product.name" class="card-img-top" style="height: 200px; object-fit: cover;">
              <div class="card-body">
           <h5 class="card-title text-primary">{{ product.name }}</h5>

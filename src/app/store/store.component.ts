@@ -54,7 +54,7 @@ export class StoreComponent implements OnInit {
 
   loadProducts() {
     const params = { ...this.filters, page: this.currentPage };
-    this.http.get<StoreResponse>('https://pethospital.runasp.net/Customer/ECommerces/index', { params })
+    this.http.get<StoreResponse>('https://pethospital.runasp.net/api/Customer/ECommerces/index', { params })
       .subscribe({
         next: (response) => {
           this.products = response.products.map(product => ({

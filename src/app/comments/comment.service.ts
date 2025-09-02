@@ -13,7 +13,7 @@ export interface CommentResponse {
   providedIn: 'root'
 })
 export class CommentService {
-  private apiUrl = 'https://pethospital.runasp.net/Admin/Comments';
+  private apiUrl = 'https://pethospital.runasp.net/api/Admin/Comments';
 
   constructor(private http: HttpClient) { }
 
