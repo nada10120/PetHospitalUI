@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
   errorMessage: string | null = null;
   successMessage: string | null = null;
 
-  private apiUrl = 'http://pethospital.runasp.net/api/Admin/Dashboard';
+  private apiUrl = 'http://pethospital.runasp.net/Admin/Dashboard';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -98,9 +98,9 @@ export class DashboardComponent implements OnInit {
         errorMessage = 'Validation error occurred, but no specific details provided by the server.';
       }
     } else if (error.status === 404) {
-      errorMessage = 'Dashboard endpoint not found. Check if the backend is running and /api/Admin/Dashboard is correct.';
+      errorMessage = 'Dashboard endpoint not found. Check if the backend is running and /Admin/Dashboard is correct.';
     } else if (error.status === 405) {
-      errorMessage = 'Method not allowed. Ensure the backend supports GET for /api/Admin/Dashboard.';
+      errorMessage = 'Method not allowed. Ensure the backend supports GET for /Admin/Dashboard.';
     } else if (error.status === 0) {
       errorMessage = 'Network error. Check if the backend is running at https://localhost:7202, CORS is configured, and HTTPS certificate is trusted.';
     } else if (error.error?.Message) {

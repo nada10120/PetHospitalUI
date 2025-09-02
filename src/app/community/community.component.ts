@@ -41,9 +41,9 @@ export class CommunityComponent implements OnInit {
   commentInputs: { [key: number]: string } = {};
   isLoading: boolean = false;
   errorMessage: string = '';
-  private apiUrl = 'http://pethospital.runasp.net/api/Customer/Community';
-  private postUrl='http://pethospital.runasp.net/api/Admin/Post';
-  private commentUrl='http://pethospital.runasp.net/api/Admin/Comments';
+  private apiUrl = 'http://pethospital.runasp.net/Customer/Community';
+  private postUrl='http://pethospital.runasp.net/Admin/Post';
+  private commentUrl='http://pethospital.runasp.net/Admin/Comments';
 
   constructor(
     private http: HttpClient,

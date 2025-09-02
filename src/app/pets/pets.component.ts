@@ -24,7 +24,7 @@ interface UserResponse {
 
 @Injectable()
 class PetService {
-  private apiUrl = 'http://pethospital.runasp.net/api/Admin/Pets';
+  private apiUrl = 'http://pethospital.runasp.net/Admin/Pets';
 
   constructor(private http: HttpClient) {}
 
@@ -60,7 +60,7 @@ class PetService {
 
 @Injectable()
 class UserService {
-  private apiUrl = 'http://pethospital.runasp.net/api/Admin/Users';
+  private apiUrl = 'http://pethospital.runasp.net/Admin/Users';
 
   constructor(private http: HttpClient) {}
 
@@ -233,7 +233,7 @@ export class PetsComponent implements OnInit {
       ? this.petService.updatePet(this.editingPetId, formData)
       : this.petService.createPet(formData);
 
-    console.log('Sending', this.editingPetId ? 'PUT' : 'POST', 'request to', this.editingPetId ? `http://pethospital.runasp.net/api/Admin/Pets/${this.editingPetId}` : 'http://pethospital.runasp.net/api/Admin/Pets');
+    console.log('Sending', this.editingPetId ? 'PUT' : 'POST', 'request to', this.editingPetId ? `http://pethospital.runasp.net/Admin/Pets/${this.editingPetId}` : 'http://pethospital.runasp.net/Admin/Pets');
 
     request.subscribe({
       next: (response) => {

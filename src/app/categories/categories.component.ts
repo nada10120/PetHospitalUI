@@ -17,7 +17,7 @@ interface CategoryRequest {
 
 @Injectable()
 class CategoryService {
-  private apiUrl = 'http://pethospital.runasp.net/api/Admin/Categorys'; // Fixed to match CategorysController
+  private apiUrl = 'http://pethospital.runasp.net/Admin/Categorys'; // Fixed to match CategorysController
 
   constructor(private http: HttpClient) {}
 
@@ -184,7 +184,7 @@ export class CategoriesComponent implements OnInit {
       });
     }
 
-    console.log('Sending', this.editingCategoryId ? 'PUT' : 'POST', 'request to', this.editingCategoryId ? `http://pethospital.runasp.net/api/Admin/Categorys/${this.editingCategoryId}` : 'http://pethospital.runasp.net/api/Admin/Categorys');
+    console.log('Sending', this.editingCategoryId ? 'PUT' : 'POST', 'request to', this.editingCategoryId ? `http://pethospital.runasp.net/Admin/Categorys/${this.editingCategoryId}` : 'http://pethospital.runasp.net/Admin/Categorys');
   }
 
   deleteCategory(categoryId: number): void {

@@ -16,7 +16,7 @@ interface ServiceResponse {
 
 @Injectable()
 class ServiceService {
-  private apiUrl = 'http://pethospital.runasp.net/api/Admin/Services';
+  private apiUrl = 'http://pethospital.runasp.net/Admin/Services';
 
   constructor(private http: HttpClient) {}
 
@@ -170,7 +170,7 @@ export class ServiceComponent implements OnInit {
       ? this.serviceService.updateService(this.editingServiceId, formData)
       : this.serviceService.createService(formData);
 
-    console.log('Sending', this.editingServiceId ? 'PUT' : 'POST', 'request to', this.editingServiceId ? `http://pethospital.runasp.net/api/Admin/Services/${this.editingServiceId}` : 'http://pethospital.runasp.net/api/Admin/Services');
+    console.log('Sending', this.editingServiceId ? 'PUT' : 'POST', 'request to', this.editingServiceId ? `http://pethospital.runasp.net/Admin/Services/${this.editingServiceId}` : 'http://pethospital.runasp.net/Admin/Services');
 
     request.subscribe({
       next: (response) => {

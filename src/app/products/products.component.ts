@@ -35,8 +35,8 @@ export class ProductsComponent implements OnInit {
   successMessage: string | null = null;
   errorMessage: string | null = null;
 
-  private apiUrl = 'http://pethospital.runasp.net/api/Admin/Products';
-  private categoriesUrl = 'http://pethospital.runasp.net/api/Admin/Categorys';
+  private apiUrl = 'http://pethospital.runasp.net/Admin/Products';
+  private categoriesUrl = 'http://pethospital.runasp.net/Admin/Categorys';
 
   constructor(private http: HttpClient, private router: Router) {}
 

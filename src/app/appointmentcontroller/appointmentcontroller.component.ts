@@ -44,7 +44,7 @@ interface ServiceResponse {
 
 @Injectable()
 class AppointmentService {
-  private apiUrl = 'http://pethospital.runasp.net/api/Admin/Appointments';
+  private apiUrl = 'http://pethospital.runasp.net/Admin/Appointments';
 
   constructor(private http: HttpClient) {}
 
@@ -86,7 +86,7 @@ class AppointmentService {
     console.error('API error:', error);
     let errorMessage = 'An error occurred. Please try again.';
     if (error.status === 404) {
-      errorMessage = 'Endpoint not found. Check if the backend is running and the URL is correct (e.g., /api/Admin/Appointments).';
+      errorMessage = 'Endpoint not found. Check if the backend is running and the URL is correct (e.g., /Admin/Appointments).';
     } else if (error.status === 405) {
       errorMessage = 'Method not allowed. Ensure the backend supports this HTTP method.';
     } else if (error.status === 0) {
@@ -100,7 +100,7 @@ class AppointmentService {
 
 @Injectable()
 class UserService {
-  private apiUrl = 'http://pethospital.runasp.net/api/Admin/Users';
+  private apiUrl = 'http://pethospital.runasp.net/Admin/Users';
 
   constructor(private http: HttpClient) {}
 
@@ -116,9 +116,9 @@ class UserService {
     console.error('User API error:', error);
     let errorMessage = 'Failed to load users. Please try again.';
     if (error.status === 404) {
-      errorMessage = 'Users endpoint not found. Check if the backend is running and /api/Admin/Users is correct.';
+      errorMessage = 'Users endpoint not found. Check if the backend is running and /Admin/Users is correct.';
     } else if (error.status === 405) {
-      errorMessage = 'Method not allowed for /api/Admin/Users. Ensure the backend supports GET.';
+      errorMessage = 'Method not allowed for /Admin/Users. Ensure the backend supports GET.';
     } else if (error.status === 0) {
       errorMessage = 'Network error. Check if the backend is running at https://localhost:7202 and CORS is configured.';
     }
@@ -128,7 +128,7 @@ class UserService {
 
 @Injectable()
 class PetService {
-  private apiUrl = 'http://pethospital.runasp.net/api/Admin/Pets';
+  private apiUrl = 'http://pethospital.runasp.net/Admin/Pets';
 
   constructor(private http: HttpClient) {}
 
@@ -144,9 +144,9 @@ class PetService {
     console.error('Pet API error:', error);
     let errorMessage = 'Failed to load pets. Please try again.';
     if (error.status === 404) {
-      errorMessage = 'Pets endpoint not found. Check if the backend is running and /api/Admin/Pets is correct.';
+      errorMessage = 'Pets endpoint not found. Check if the backend is running and /Admin/Pets is correct.';
     } else if (error.status === 405) {
-      errorMessage = 'Method not allowed for /api/Admin/Pets. Ensure the backend supports GET.';
+      errorMessage = 'Method not allowed for /Admin/Pets. Ensure the backend supports GET.';
     } else if (error.status === 0) {
       errorMessage = 'Network error. Check if the backend is running at https://localhost:7202 and CORS is configured.';
     }
@@ -156,7 +156,7 @@ class PetService {
 
 @Injectable()
 class ServiceService {
-  private apiUrl = 'http://pethospital.runasp.net/api/Admin/Services';
+  private apiUrl = 'http://pethospital.runasp.net/Admin/Services';
 
   constructor(private http: HttpClient) {}
 
@@ -172,9 +172,9 @@ class ServiceService {
     console.error('Service API error:', error);
     let errorMessage = 'Failed to load services. Please try again.';
     if (error.status === 404) {
-      errorMessage = 'Services endpoint not found. Check if the backend is running and /api/Admin/Services is correct.';
+      errorMessage = 'Services endpoint not found. Check if the backend is running and /Admin/Services is correct.';
     } else if (error.status === 405) {
-      errorMessage = 'Method not allowed for /api/Admin/Services. Ensure the backend supports GET.';
+      errorMessage = 'Method not allowed for /Admin/Services. Ensure the backend supports GET.';
     } else if (error.status === 0) {
       errorMessage = 'Network error. Check if the backend is running at https://localhost:7202 and CORS is configured.';
     }

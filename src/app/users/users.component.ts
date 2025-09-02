@@ -50,7 +50,7 @@ export class UsersComponent implements OnInit {
   errorMessage: string | null = null;
   successMessage: string | null = null;
 
-  private apiUrl = 'http://pethospital.runasp.net/api/Admin/Users';
+  private apiUrl = 'http://pethospital.runasp.net/Admin/Users';
   private defaultProfilePicture = '/assets/images/default-profile.png';
 
   constructor(private http: HttpClient) {}
@@ -116,7 +116,7 @@ export class UsersComponent implements OnInit {
 
   private async getVetDetails(userId: string): Promise<{ specialization: string; availabilitySchedule: string } | null> {
     try {
-      const vetDetails = await lastValueFrom(this.http.get<{ specialization: string; availabilitySchedule: string }>(`http://pethospital.runasp.net/api/Vets/${userId}`));
+      const vetDetails = await lastValueFrom(this.http.get<{ specialization: string; availabilitySchedule: string }>(`http://pethospital.runasp.net/Vets/${userId}`));
       console.log('Vet details fetched for user:', userId, vetDetails);
       return vetDetails || null;
     } catch (err) {
@@ -227,7 +227,7 @@ export class UsersComponent implements OnInit {
     console.error('API error:', error);
     let errorMessage = 'An error occurred. Please try again.';
     if (error.status === 404) {
-      errorMessage = 'Endpoint not found. Check if the backend is running and /api/Admin/Users is correct.';
+      errorMessage = 'Endpoint not found. Check if the backend is running and /Admin/Users is correct.';
     } else if (error.status === 405) {
       errorMessage = 'Method not allowed. Ensure the backend supports this HTTP method.';
     } else if (error.status === 0) {
